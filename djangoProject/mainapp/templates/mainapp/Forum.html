@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面布局示例</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            background-color: #f8f8f8;
+            padding: 10px 20px;
+        }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .layout {
+            
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #ffffff;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        .separator {
+            margin-left: 20px;
+            color: #333;
+            font-size: 16px;
+            font-weight: bolder;
+        }
+
+        .header {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .header a {
+            color: white;
+            text-decoration: none;
+            padding: 0 10px;
+        }
+
+        .container {
+            width: 800px; /* 将容器的最大宽度调整为800px */
+            margin-right: 20px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .search-bar input {
+            width: 550px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 0 4px 4px 0;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .forum-links {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .forum-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .forum-links a:hover {
+            text-decoration: underline;
+        }
+
+        .recommendations {
+            margin-top: 10px;
+        }
+
+        .recommendation {
+            list-style: none;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .recommendation a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            display: block;
+        }
+
+        .text {
+            height: 100px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="#">网页</a>
+        <a href="#">图片</a>
+        <a href="#">地图</a>
+        <span class="separator">|</span>
+        <a href="#">登录</a>
+        <a href="#">注册</a>
+    </nav>
+    <!-- 搜索 -->
+    <div class="search-bar">
+        <input type="text" placeholder="搜索">
+        <button type="button">搜索</button>
+    </div>
+
+    <div class="layout">
+        <div class="container">
+            <!-- Glasgow Post -->
+            <div class="section">
+                <div class="section-title">Glasgow Post</div>
+                <hr>
+            </div>
+            <!-- 论坛链接 -->
+            <div class="forum-links">
+                <a href="#">看贴</a>
+                <a href="#">照片</a>
+                <a href="#">推荐</a>
+            </div>
+            <!-- 推荐 -->
+            <div class="section">
+                <ul class="recommendations">
+                    <li class="recommendation"><a href="#">帖子标题 1</a></li>
+                    <div class="text">这是帖子 1 的简介或描述。</div>
+                    <hr>
+                    <li class="recommendation"><a href="#">帖子标题 2</a></li>
+                    <div class="text">这是帖子 2 的简介或描述。</div>
+                </ul>
+            </div>
+        </div>
+        <div class="sidebar">
+            <a href="#">活动列表</a>
+            <a href="#">创建活动</a>
+        </div>
+    </div>
+</body>
+
+</html>

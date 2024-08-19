@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面布局示例</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            background-color: #f8f8f8;
+            padding: 10px 20px;
+        }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .separator {
+            margin-left: 20px;
+            color: #333;
+            font-size: 16px;
+            font-weight: bolder;
+        }
+        .header {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .header a {
+            color: white;
+            text-decoration: none;
+            padding: 0 10px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .search-bar input {
+            width: 550px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 0 4px 4px 0;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .forum-links {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .forum-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            margin-right: 10px;
+
+        }
+
+        .forum-links a:hover {
+            text-decoration: underline;
+        }
+
+        .recommendations {
+            margin-top: 10px;
+        }
+
+        .recommendation {
+            list-style: none;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .recommendation a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            display: block;
+            /* 使链接竖直排列 */
+        }
+
+        .avatar {
+            height: 35px;
+            width: 35px;
+            border: 1px solid black;
+            margin-bottom: 5px;
+        }
+
+        .text {
+            font-size: 14px;
+            height: 100px;
+            width: 400px;
+            white-space: normal;
+            overflow: auto;
+            display: inline-block;
+        }
+
+        .username {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .reply {
+            text-align: end;
+            margin-right: 50px;
+            font-size: 14px;
+        }
+
+        span {
+            display: flex;
+            align-items: flex-start;
+            /* 确保文本顶端对齐 */
+            margin-right: 5px;
+            /* 根据需要调整间隔 */
+        }
+
+        .border-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-right: 10px;
+            border-left: 1px solid #ccc;
+            padding-left: 10px;
+        }
+
+        .box {
+            display: flex;
+            align-items: start;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="#">网页</a>
+        <a href="#">图片</a>
+        <a href="#">地图</a>
+        <span class="separator">|</span>
+        <a href="#">登录</a>
+        <a href="#">注册</a>
+    </nav>
+    <!-- 搜索 -->
+    <div class="search-bar">
+        <input type="text" placeholder="搜索">
+        <button type="button">搜索</button>
+    </div>
+    <div class="container">
+        <!-- Kelvingrove Art gallery -->
+        <div class="section">
+            <div class="section-title">Kelvingrove Art gallery</div>
+            <hr>
+        </div>
+        <!-- 推荐 -->
+        <div class="section">
+            <ul class="recommendations">
+
+                <li class="recommendation">
+                    <div class="box">
+                        <div class="border-left">
+                            <div class="avatar"></div>
+                            <div class="username"><span>user1</span></div>
+                        </div>
+                        <div class="text">
+                            <span>帖子标题</span>
+                            这是用户 user1 发表的帖子内容。这是一个较长的描述，可能会超过一行或多行，以展示如何使用CSS控制文本的显示。这是一个较长的描述，可能会超过一行或多行，以展示如何使用CSS控制文本的显示。
+                        </div>
+                    </div>
+                    <a href="" class="reply">回复</a>
+                </li>
+
+                <hr>
+                <li class="recommendation">
+                    <div class="box">
+                        <div class="border-left">
+                            <div class="avatar"></div>
+                            <div class="username"><span>user2</span></div>
+                        </div>
+                        <div class="text">
+                            <span>帖子标题</span>
+                            这是用户 user2 发表的帖子内容。这是一个较长的描述，可能会超过一行或多行，以展示如何使用CSS控制文本的显示。这是一个较长的描述，可能会超过一行或多行，以展示如何使用CSS控制文本的显示。
+                        </div>
+                    </div>
+                    <a href="" class="reply">回复</a>
+                </li>
+
+                <!-- 更多推荐内容 -->
+
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

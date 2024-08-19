@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活动详情</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            box-sizing: border-box;
+            max-width: 1200px;
+            /* 设置最大宽度 */
+            margin: auto;
+            /* 使页面居中 */
+        }
+
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            background-color: #f8f8f8;
+            padding: 10px 20px;
+        }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .sidebar {
+
+            width: 200px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            box-sizing: border-box;
+            border-right: 1px solid #ccc;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            /* 添加这一行 */
+            justify-content: center;
+            /* 添加这一行以水平居中 */
+            height: 40px;
+            /* 设置一个固定的高度，可以根据需要调整 */
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        .separator {
+            margin-left: 20px;
+            color: #333;
+            font-size: 16px;
+            font-weight: bolder;
+        }
+
+        .sidebar-left {
+            width: 200px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            box-sizing: border-box;
+            border-right: 1px solid #ccc;
+        }
+
+        .sidebar-right {
+            width: 200px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            box-sizing: border-box;
+            border-left: 1px solid #ccc;
+        }
+
+        .sidebar-right a {
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .search-bar {
+            display: flex;
+
+            margin: 20px 0;
+        }
+
+        .search-bar input {
+            width: 500px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            border-right: none;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 0 4px 4px 0;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
+
+        .search-box {
+            width: 300px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .content {
+            margin-top: 20px;
+        }
+
+        .event-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .event-description {
+            margin-bottom: 20px;
+            background-color: #eaeaea;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .event-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .event-details-left {
+            width: 70%;
+        }
+
+        .event-details-right {
+            width: 25%;
+            background-color: #eaeaea;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .event-details div {
+            margin-bottom: 10px;
+        }
+
+        .event-participants {
+            margin-bottom: 20px;
+        }
+
+        .event-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .event-actions button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .event-actions button:hover {
+            background-color: #0056b3;
+        }
+
+        .event-details-right {
+            width: 25%;
+            background-color: #eaeaea;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+            height: 300px; /* 为地图设置固定高度 */
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+<script>
+    function initMap() {
+        // 创建地图实例，并设置中心点和缩放级别
+        var map = L.map('map').setView([51.5074, -0.1278], 11); // 伦敦的坐标
+
+        // 加载并显示 OpenStreetMap 图层
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+        }).addTo(map);
+    }
+
+    window.onload = initMap;
+</script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <a href="#">活动列表</a>
+        <a href="#">创建活动</a>
+    </div>
+
+    <div class="main-content">
+        <nav>
+            <a href="#">网页</a>
+            <a href="#">图片</a>
+            <a href="#">地图</a>
+            <span class="separator">|</span>
+            <a href="#">登录</a>
+            <a href="#">注册</a>
+        </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="搜索">
+            <button type="button">搜索</button>
+        </div>
+        <div class="content">
+            <div class="event-title">活动标题</div>
+            <div class="event-description">
+                活动描述
+                <p>这里是活动的详细描述内容，可以有多行文字。</p>
+            </div>
+            <div class="event-details">
+                <div class="event-details-left">
+                    <div>时间</div>
+                    <div>地点</div>
+                    <div class="event-participants">
+                        <strong>参与者</strong>
+                        <p>用户1</p>
+                    </div>
+                </div>
+                <div class="event-details-right">
+                    <div id="map" style="width: 100%; height: 200px;"></div>
+                </div>
+            </div>
+            <div class="event-actions">
+                <button>加入活动</button>
+                <button>返回列表</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

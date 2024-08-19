@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glasgow Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        nav {
+
+            display: flex;
+            justify-content: flex-end;
+            background-color: #f8f8f8;
+            padding: 10px 20px;
+
+        }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .separator {
+            margin-left: 20px;
+            color: #333;
+            font-size: 16px;
+            font-weight: bolder;
+        }
+
+        .sidebar {
+
+            width: 200px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            box-sizing: border-box;
+            border-right: 1px solid #ccc;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            /* 添加这一行 */
+            justify-content: center;
+            /* 添加这一行以水平居中 */
+            height: 40px;
+            /* 设置一个固定的高度，可以根据需要调整 */
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .search-bar {
+            display: flex;
+
+            margin: 20px 0;
+        }
+
+        .search-bar input {
+            width: 500px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            border-right: none;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 0 4px 4px 0;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
+
+        .search-box {
+            width: 300px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .content {
+            width: 70%;
+            margin-top: 20px;
+        }
+
+        .post-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .post-list {
+            margin-bottom: 20px;
+        }
+
+        .post-list div {
+            height: 20px;
+            margin-bottom: 5px;
+            /* background-color: #eaeaea; */
+        }
+
+        .post-form {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .post-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .post-form input,
+        .post-form textarea {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .post-form button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .post-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+
+    <div class="sidebar">
+        <a href="#">活动列表</a>
+        <a href="#">创建活动</a>
+    </div>
+
+
+    <div class="main-content">
+
+        <nav>
+            <a href="#">网页</a>
+            <a href="#">图片</a>
+            <a href="#">地图</a>
+            <span class="separator">|</span>
+            <a href="#">登录</a>
+            <a href="#">注册</a>
+        </nav>
+
+
+
+        <div class="search-bar">
+            <input type="text" placeholder="搜索">
+            <button type="button">搜索</button>
+        </div>
+
+        <div class="content">
+            <div class="post-title">Glasgow Post</div>
+            <div class="post-list">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="post-form">
+                <label for="title">标题</label>
+                <input type="text" id="title" placeholder="输入标题">
+                <label for="details">详情</label>
+                <textarea id="details" placeholder="输入详情"></textarea>
+                <button>发布</button>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

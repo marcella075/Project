@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            background-color: #f8f8f8;
+            padding: 10px 20px;
+        }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .separator {
+            margin-left: 20px;
+            color: #333;
+            font-size: 16px;
+            font-weight: bolder;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .profile-container {
+            display: flex;
+        }
+
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-right: 20px;
+        }
+
+        .profile-info {
+            flex-grow: 1;
+            margin-left: 85px;
+        }
+
+        .profile-info h2 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .profile-info p {
+            margin: 5px 0;
+        }
+
+        .edit-link {
+            text-align: right;
+            color: #000000;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .edit-link:hover {
+            text-decoration: underline;
+        }
+
+        .sidebar {
+            margin-left: 20px;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-left: 2px solid #000;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            padding: 10px;
+        }
+
+        .sidebar a.active {
+            background-color: #eee;
+            border-radius: 4px;
+        }
+
+        .info-message {
+            margin-left: 20px;
+        }
+
+        .posts-section {
+            height: 100px;
+            margin-top: 20px;
+        }
+
+        .posts-section h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+            border-top: 1px solid #000;
+            padding-top: 10px;
+        }
+        .posts-section a {
+            text-decoration: none;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+<nav>
+    <a href="#">网页</a>
+    <a href="#">图片</a>
+    <a href="#">地图</a>
+    <span class="separator">|</span>
+    {% if user.is_authenticated %}
+        <a href="{% url 'profile' %}">{{ user.username }}</a>
+    {% else %}
+        <a href="{% url 'login' %}">登录</a>
+        <a href="{% url 'register' %}">注册</a>
+    {% endif %}
+</nav>
+
+    <div class="container">
+
+        <div class="profile-pic"></div>
+        <div class="profile-container">
+
+            <div class="profile-info">
+                <h2>My profile</h2>
+                <div class="info-message">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <p>E-mail: <span><input type="email" name="email" value="{{ user.email }}"></span></p>
+                        <p>City: <span><input type="text" name="city" value="{{ profile.city }}"></span></p>
+                        <p>Phone number: <span><input type="text" name="phone_number" value="{{ profile.phone_number }}"></span></p>
+                        <button type="submit" class="edit-link">Save Changes</button>
+                    </form>
+                </div>
+                <div class="posts-section">
+                    <h3>My posts</h3>
+                <ul>
+                    {% for post in posts %}
+                        <li><a href="#">{{ post.title }}</a></li>
+                    {% endfor %}
+                </ul>
+
+                    <a href="{% url 'add_post' %}" class="edit-link">Add New Post</a>
+                </div>
+            </div>
+            <div class="sidebar">
+                <a href="#" class="active">My profile</a>
+                <a href="#">My posts</a>
+                <a href="#">My messages</a>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
